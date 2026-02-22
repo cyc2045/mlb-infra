@@ -6,19 +6,17 @@ metadata:
 spec:
   project: default
   source:
-    # This points to your APP repo
-    repoURL: https://github.com/your-username/lineup-service-demo.git
+    repoURL: https://github.com/cyc2045/lineup-service-demo.git
     targetRevision: HEAD
-    path: helm # The folder where your Chart.yaml lives
+    path: helm
     helm:
-      # This tells ArgoCD to use the 'npd' settings you just made!
       valueFiles:
         - values.yaml
         - npd/values.yaml
+      # ADD THIS SECTION BELOW
+      parameters:
+        - name: "image.tag"
+          value: "v0.0.0" # The GitHub Action will look for this 'value:' line
   destination:
     server: https://kubernetes.default.svc
     namespace: lineup-dev
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
