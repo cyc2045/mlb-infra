@@ -13,10 +13,7 @@ spec:
       valueFiles:
         - values.yaml
         - npd/values.yaml
-      # ADD THIS SECTION BELOW
-      parameters:
-        - name: "image.tag"
-          value: "v0.0.10"
+      # PARAMETERS SECTION REMOVED TO ALLOW AUTOMATIC UPDATES
   destination:
     server: https://kubernetes.default.svc
     namespace: lineup-dev
