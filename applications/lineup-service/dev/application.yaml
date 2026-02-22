@@ -16,7 +16,7 @@ spec:
       # ADD THIS SECTION BELOW
       parameters:
         - name: "image.tag"
-          value: "v0.0.8"
+          value: "v0.0.9"
   destination:
     server: https://kubernetes.default.svc
     namespace: lineup-dev
