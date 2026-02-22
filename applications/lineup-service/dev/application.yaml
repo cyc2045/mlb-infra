@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: lineup-service-dev
+  namespace: argocd
+spec:
+  project: default
+  source:
+    # This points to your APP repo
+    repoURL: https://github.com/your-username/lineup-service-demo.git
+    targetRevision: HEAD
+    path: helm # The folder where your Chart.yaml lives
+    helm:
+      # This tells ArgoCD to use the 'npd' settings you just made!
+      valueFiles:
+        - values.yaml
+        - npd/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: lineup-dev
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
